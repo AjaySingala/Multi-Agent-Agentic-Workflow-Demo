@@ -1,0 +1,2 @@
+python -m pip install langchain langgraph langchain-core langchain-community openai langchain-openai
+python -m pip install python-dotenv

@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+
+  coordinator:
+    build: ./coordinator_service
+    container_name: coordinator
+    ports:
+      - "8000:8000"
+
+  research-agent:
+    build: ./research_agent_service
+    container_name: research-agent
+    ports:
+      - "8001:8001"
+
+  news-agent:
+    build: ./news_agent_service
+    container_name: news-agent
+    ports:
+      - "8002:8002"
+
+  report-agent:
+    build: ./report_agent_service
+    container_name: report-agent
+    ports:
+      - "8003:8003"
+      

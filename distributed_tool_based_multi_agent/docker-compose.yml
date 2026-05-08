@@ -1,0 +1,72 @@
+version: "3.9"
+
+services:
+
+  coordinator:
+
+    build:
+      context: ./coordinator_service
+
+    container_name: coordinator
+
+    ports:
+      - "8000:8000"
+
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+
+    depends_on:
+      - research-agent
+      - news-agent
+      - report-agent
+
+    restart: unless-stopped
+
+
+  research-agent:
+
+    build:
+      context: ./research_agent_service
+
+    container_name: research-agent
+
+    ports:
+      - "8001:8001"
+
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+
+    restart: unless-stopped
+
+
+  news-agent:
+
+    build:
+      context: ./news_agent_service
+
+    container_name: news-agent
+
+    ports:
+      - "8002:8002"
+
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+
+    restart: unless-stopped
+
+
+  report-agent:
+
+    build:
+      context: ./report_agent_service
+
+    container_name: report-agent
+
+    ports:
+      - "8003:8003"
+
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+
+    restart: unless-stopped
+    
